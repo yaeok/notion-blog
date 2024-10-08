@@ -7,30 +7,6 @@ import {
   getPostsByTagAndPage,
 } from '@/lib/notionAPI'
 
-export const revalidate = 60
-
-export async function getStaticPaths() {
-  const allTags = await getAllTags()
-
-  const params = []
-
-  await Promise.all(
-    allTags.map((tag: string) => {
-      return getNumberOfPagesByTag(tag).then((numberOfPage: number) => {
-        for (let i = 1; i <= numberOfPage; i++) {
-          params.push({
-            params: { tag: tag, page: i.toString() },
-          })
-        }
-      })
-    })
-  )
-  return {
-    paths: params,
-    fallback: 'blocking',
-  }
-}
-
 export default async function BlogTagPageList({
   params,
 }: {

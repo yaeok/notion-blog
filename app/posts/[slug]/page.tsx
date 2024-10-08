@@ -4,21 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-import { getAllPosts, getSinglePost } from '@/lib/notionAPI'
-
-export const revalidate = 6
-
-export async function getStaticPaths() {
-  const allPosts = await getAllPosts()
-
-  const paths = allPosts.map((post) => ({
-    params: { slug: post.slug },
-  }))
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
+import { getSinglePost } from '@/lib/notionAPI'
 
 export default async function PostPage({
   params,
