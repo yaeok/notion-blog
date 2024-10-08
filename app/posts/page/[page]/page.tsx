@@ -3,20 +3,6 @@ import SinglePost from '@/components/Post/SinglePost'
 import Tag from '@/components/Tag/Tag'
 import { getAllTags, getNumberOfPages, getPostsByPage } from '@/lib/notionAPI'
 
-export const revalidate = 60
-
-export async function getStaticPaths() {
-  const numberOfPage = await getNumberOfPages()
-
-  const paths = Array.from({ length: numberOfPage }).map((_, index) => ({
-    params: { page: (index + 1).toString() },
-  }))
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
-
 export default async function BlogPageList({
   params,
 }: {
