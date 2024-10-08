@@ -23,7 +23,6 @@ export default async function BlogPageList({
               <div key={post.id}>
                 <SinglePost
                   title={post.title}
-                  description={post.description}
                   date={post.date}
                   tags={post.tags}
                   slug={post.slug}

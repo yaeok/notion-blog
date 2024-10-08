@@ -19,12 +19,11 @@ export default async function PostPage({
       <span className='text-gray-500'>Posted date at {post.metadata.date}</span>
       <br />
       {post.metadata.tags.map((tag, index) => (
-        <p
-          key={index}
-          className='text-white bg-sky-900 rounded-xl font-medium mt-2 px-2 inline-block mr-2'
-        >
-          <Link href={`/posts/tag/${tag}/page/1`}>{tag}</Link>
-        </p>
+        <Link href={`/posts/tag/${tag}/page/1`} key={index.toString()}>
+          <span className='text-white bg-sky-900 rounded-xl px-2 pb-1 font-medium mr-2'>
+            {tag}
+          </span>
+        </Link>
       ))}
       <div className='mt-10 font-medium'>
         <ReactMarkdown

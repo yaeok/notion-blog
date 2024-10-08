@@ -21,7 +21,6 @@ export default async function HomePage() {
             <div key={post.id} className='mx-4 mb-8'>
               <SinglePost
                 title={post.title}
-                description={post.description}
                 date={post.date}
                 tags={post.tags}
                 slug={post.slug}
