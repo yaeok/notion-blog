@@ -1,5 +1,6 @@
 import { NotionToMarkdown } from 'notion-to-md'
 
+import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants'
 import { Client } from '@notionhq/client'
 
 const notion = new Client({
@@ -13,6 +14,18 @@ export const getAllPosts = async () => {
   const response = await notion.databases.query({
     database_id: databaseId,
     page_size: 100,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
+    sorts: [
+      {
+        property: 'CreatedAt',
+        direction: 'descending',
+      },
+    ],
   })
 
   const allPosts = response.results
@@ -59,7 +72,6 @@ export const getSinglePost = async (slug) => {
 
   const mdBlocks = await n2m.pageToMarkdown(post.id)
   const mdString = n2m.toMarkdownString(mdBlocks)
-  console.log(mdString)
 
   return {
     metadata,
@@ -67,9 +79,44 @@ export const getSinglePost = async (slug) => {
   }
 }
 
-export const getPostsForTopPage = async (pageSize = 4) => {
+export const getPostsForTopPage = async (pageSize: number) => {
   const allPosts = await getAllPosts()
   const fourPosts = allPosts.slice(0, pageSize)
 
   return fourPosts
+}
+
+export const getPostsByPage = async (page: number) => {
+  const allPosts = await getAllPosts()
+  const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE
+  const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE
+  return allPosts.slice(startIndex, endIndex)
+}
+
+export const getNumberOfPages = async () => {
+  const allPosts = await getAllPosts()
+  return Math.ceil(allPosts.length / NUMBER_OF_POSTS_PER_PAGE)
+}
+
+export const getPostsByTagAndPage = async (tag: string, page: number) => {
+  const allPosts = await getAllPosts()
+  const postsByTag = allPosts.filter((post) => post.tags.includes(tag))
+
+  const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE
+  const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE
+  return postsByTag.slice(startIndex, endIndex)
+}
+
+export const getNumberOfPagesByTag = async (tag: string) => {
+  const allPosts = await getAllPosts()
+  const postsByTag = allPosts.filter((post) => post.tags.includes(tag))
+
+  return Math.ceil(postsByTag.length / NUMBER_OF_POSTS_PER_PAGE)
+}
+
+export const getAllTags = async () => {
+  const allPosts = await getAllPosts()
+  const allTags = allPosts.flatMap((post) => post.tags)
+  const uniqueTags = Array.from(new Set(allTags))
+  return uniqueTags
 }

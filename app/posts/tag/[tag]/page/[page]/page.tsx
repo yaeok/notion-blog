@@ -1,30 +1,50 @@
 import Pagination from '@/components/Pagination/Pagination'
 import SinglePost from '@/components/Post/SinglePost'
 import Tag from '@/components/Tag/Tag'
-import { getAllTags, getNumberOfPages, getPostsByPage } from '@/lib/notionAPI'
+import {
+  getAllTags,
+  getNumberOfPagesByTag,
+  getPostsByTagAndPage,
+} from '@/lib/notionAPI'
 
 export const revalidate = 60
 
 export async function getStaticPaths() {
-  const numberOfPage = await getNumberOfPages()
+  const allTags = await getAllTags()
 
-  const paths = Array.from({ length: numberOfPage }).map((_, index) => ({
-    params: { page: (index + 1).toString() },
-  }))
+  const params = []
+
+  await Promise.all(
+    allTags.map((tag: string) => {
+      return getNumberOfPagesByTag(tag).then((numberOfPage: number) => {
+        for (let i = 1; i <= numberOfPage; i++) {
+          params.push({
+            params: { tag: tag, page: i.toString() },
+          })
+        }
+      })
+    })
+  )
   return {
-    paths,
+    paths: params,
     fallback: 'blocking',
   }
 }
 
-export default async function BlogPageList({
+export default async function BlogTagPageList({
   params,
 }: {
-  params: { page: string }
+  params: { tag: string; page: string }
 }) {
   const alltags = await getAllTags()
-  const numberOfPage = await getNumberOfPages()
-  const postsByPage = await getPostsByPage(parseInt(params.page.toString(), 10))
+  const currentTag = params.tag.toString()
+  const upperCaseTag = currentTag.charAt(0).toUpperCase() + currentTag.slice(1)
+  const postsByPage = await getPostsByTagAndPage(
+    upperCaseTag,
+    parseInt(params.page.toString(), 10)
+  )
+  const numberOfPagesByTag = await getNumberOfPagesByTag(upperCaseTag)
+
   return (
     <div className='container h-full w-full mx-auto'>
       <main className='container w-full mt-16'>
@@ -47,7 +67,7 @@ export default async function BlogPageList({
             )
           })}
         </section>
-        <Pagination numberOfPage={numberOfPage} tag='' />
+        <Pagination numberOfPage={numberOfPagesByTag} tag={currentTag} />
         <Tag tags={alltags} />
       </main>
     </div>

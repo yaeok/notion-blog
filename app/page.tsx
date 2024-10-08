@@ -1,12 +1,15 @@
 import Link from 'next/link'
 
 import SinglePost from '@/components/Post/SinglePost'
-import { getPostsForTopPage } from '@/lib/notionAPI'
+import Tag from '@/components/Tag/Tag'
+import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants'
+import { getAllTags, getPostsForTopPage } from '@/lib/notionAPI'
 
 export const revalidate = 60
 
 export default async function HomePage() {
-  const fourPosts = await getPostsForTopPage()
+  const fourPosts = await getPostsForTopPage(NUMBER_OF_POSTS_PER_PAGE)
+  const allTags = await getAllTags()
   return (
     <div className='container h-full w-full mx-auto'>
       <main className='container w-full mt-16'>
@@ -22,6 +25,7 @@ export default async function HomePage() {
                 date={post.date}
                 tags={post.tags}
                 slug={post.slug}
+                isPaginationPage={false}
               />
             </div>
           )
@@ -32,6 +36,7 @@ export default async function HomePage() {
         >
           ...もっと見る
         </Link>
+        <Tag tags={allTags} />
       </main>
     </div>
   )
