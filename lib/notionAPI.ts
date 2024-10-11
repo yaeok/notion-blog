@@ -50,6 +50,7 @@ const getPageMetadata = (post) => {
     date: post.properties.CreatedAt.date.start,
     slug: post.properties.Slug.rich_text[0].plain_text,
     tags: getTags(post.properties.Tags.multi_select),
+    type: post.properties.Type.select.name,
   }
 }
 
@@ -119,4 +120,11 @@ export const getAllTags = async () => {
   const allTags = allPosts.flatMap((post) => post.tags)
   const uniqueTags = Array.from(new Set(allTags))
   return uniqueTags
+}
+
+export const getAllTypes = async () => {
+  const allPosts = await getAllPosts()
+  const allTypes = allPosts.flatMap((post) => post.type)
+  const uniqueTypes = Array.from(new Set(allTypes))
+  return uniqueTypes
 }

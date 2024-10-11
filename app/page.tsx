@@ -13,9 +13,7 @@ export default async function HomePage() {
   return (
     <div className='container h-full w-full mx-auto'>
       <main className='container w-full mt-16'>
-        <h1 className='text-5xl font-medium text-center mb-16'>
-          Notion Blog🚀
-        </h1>
+        <h1 className='text-5xl font-medium text-center mb-16'>Blog🚀</h1>
         {fourPosts.map((post) => {
           return (
             <div key={post.id} className='mx-4 mb-8'>

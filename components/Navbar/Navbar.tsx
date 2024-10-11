@@ -3,35 +3,52 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='container mx-auto lg:w-2/4'>
+    <nav className='container mx-4 md:mx-auto my-4 md:my-0 lg:w-3/5'>
       <div className='container flex items-center justify-between mx-auto'>
-        <Link href='/' className='text-2xl font-medium'>
-          yappi
+        <Link href='/' className='text-3xl font-medium'>
+          <span>Take IT </span>
+          <span className='text-orange-500'>!</span>
         </Link>
-        <div>
-          <ul className='flex items-center text-sm py-4'>
+        <div className='hidden md:flex'>
+          <ul className='flex items-center text-sm py-4 space-x-6 px-4'>
             <li>
               <Link
-                href=''
-                className='block px-4 py-2 hover:text-sky-900 transition-all duration-300'
+                href='https://github.com/yaeok'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='block my-2 font-medium hover:text-sky-800 transition-all duration-300 hover:underline'
               >
                 Github
               </Link>
             </li>
             <li>
               <Link
-                href=''
-                className='block px-4 py-2 hover:text-sky-900 transition-all duration-300'
+                href='https://qiita.com/yappi-dev'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='block my-2 font-medium hover:text-sky-800 transition-all duration-300 hover:underline'
               >
                 Qiita
               </Link>
             </li>
             <li>
               <Link
-                href=''
-                className='block px-4 py-2 hover:text-sky-900 transition-all duration-300'
+                href='https://zenn.dev/ko_hei'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='block my-2 font-medium hover:text-sky-800 transition-all duration-300 hover:underline'
               >
-                Twitter
+                Zenn
+              </Link>
+            </li>
+            <li>
+              <Link
+                href=''
+                target='_blank'
+                rel='noopener noreferrer'
+                className='block my-2 font-medium hover:text-sky-800 transition-all duration-300 hover:underline'
+              >
+                X(旧:Twitter)
               </Link>
             </li>
           </ul>
