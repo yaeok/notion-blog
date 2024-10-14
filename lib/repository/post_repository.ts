@@ -1,16 +1,8 @@
-import { NotionToMarkdown } from 'notion-to-md'
-
 import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants'
-import { Client } from '@notionhq/client'
-
-const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
-})
-
-const n2m = new NotionToMarkdown({ notionClient: notion })
+import { n2m, notion } from '@/lib/notion_config'
 
 export const getAllPosts = async () => {
-  const databaseId = process.env.NOTION_DATABASE_ID
+  const databaseId = process.env.NOTION_BLOG_DATABASE_ID
   const response = await notion.databases.query({
     database_id: databaseId,
     page_size: 100,
@@ -51,11 +43,11 @@ const getPageMetadata = (post) => {
     slug: post.properties.Slug.rich_text[0].plain_text,
     tags: getTags(post.properties.Tags.multi_select),
     type: post.properties.Type.select.name,
-  }
+  } as Post
 }
 
-export const getSinglePost = async (slug) => {
-  const databaseId = process.env.NOTION_DATABASE_ID
+export const getSinglePost = async (slug: string) => {
+  const databaseId = process.env.NOTION_BLOG_DATABASE_ID
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -115,9 +107,9 @@ export const getNumberOfPagesByTag = async (tag: string) => {
   return Math.ceil(postsByTag.length / NUMBER_OF_POSTS_PER_PAGE)
 }
 
-export const getAllTags = async () => {
+export const getAllTags = async (): Promise<string[]> => {
   const allPosts = await getAllPosts()
-  const allTags = allPosts.flatMap((post) => post.tags)
+  const allTags: string[] = allPosts.flatMap((post) => post.tags)
   const uniqueTags = Array.from(new Set(allTags))
   return uniqueTags
 }
