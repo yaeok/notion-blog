@@ -14,7 +14,7 @@ const SingleBook = (props: Props) => {
   return (
     <>
       {isPaginationPage ? (
-        <section className='bg-sky-900 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+        <section className='bg-sky-300 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
           <div className='flex flex-col gap-4'>
             <h2 className='text-gray-100 md:text-lg lg:text-2xl font-medium mb-2'>
               <Link href={`/books/${slug}`}>{title}</Link>
@@ -37,7 +37,7 @@ const SingleBook = (props: Props) => {
           </div>
         </section>
       ) : (
-        <section className='lg:w-1/2 bg-sky-900 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+        <section className='lg:w-2/3 bg-sky-300 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
           <div className='flex flex-col gap-4'>
             <h2 className='text-gray-100 text-2xl font-medium mb-2'>
               <Link href={`/books/${slug}`}>{title}</Link>

@@ -27,7 +27,7 @@ const SinglePost = (props: Props) => {
                     href={`/posts/tag/${tag}/page/1`}
                     key={index.toString()}
                   >
-                    <span className='text-white bg-gray-500 rounded-xl px-2 pb-1 font-medium'>
+                    <span className='text-white bg-gray-500 rounded-xl px-2 py-1 font-medium'>
                       {tag}
                     </span>
                   </Link>
@@ -51,7 +51,7 @@ const SinglePost = (props: Props) => {
                       href={`/posts/tag/${tag}/page/1`}
                       key={index.toString()}
                     >
-                      <span className='text-white bg-gray-500 rounded-xl px-2 pb-1 font-medium mr-2'>
+                      <span className='text-white bg-gray-500 rounded-xl px-2 py-1 font-medium mr-2'>
                         {tag}
                       </span>
                     </Link>
