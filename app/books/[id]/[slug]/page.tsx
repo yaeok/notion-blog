@@ -1,16 +1,17 @@
-import { getSinglePost } from '@/lib/repository/post_repository'
 import Link from 'next/link'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+import { getSingleArticle } from '@/lib/repository/book_repository'
+
 export default async function PostPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const post = await getSinglePost(params.slug)
+  const post = await getSingleArticle(params.slug)
   return (
     <section className='container lg:px-2 px-5 min-h-screen lg:w-3/5 mx-auto py-10'>
       <section className='space-y-12'>
