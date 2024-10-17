@@ -41,17 +41,18 @@ export default async function HomePage() {
         </section>
         <section className='flex flex-col items-center'>
           <h1 className='text-5xl font-medium text-center mb-16'>Book📖</h1>
-          <div className='w-2/3 mx-4 mb-8 grid grid-cols-3 gap-4'>
+          <div className='w-full md:w-2/3 mx-4 mb-8 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {fourBooks.map((book) => {
               return (
-                <SingleBook
-                  key={book.id}
-                  id={book.group}
-                  title={book.title}
-                  date={book.date}
-                  tags={book.tags}
-                  slug={book.group}
-                />
+                <div key={book.id} className='m-2'>
+                  <SingleBook
+                    id={book.group}
+                    title={book.title}
+                    date={book.date}
+                    tags={book.tags}
+                    slug={book.group}
+                  />
+                </div>
               )
             })}
           </div>

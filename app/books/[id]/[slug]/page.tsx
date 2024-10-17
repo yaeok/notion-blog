@@ -11,6 +11,7 @@ export default async function PostPage({
 }: {
   params: { slug: string }
 }) {
+  console.log(params)
   const post = await getSingleArticle(params.slug)
   return (
     <section className='container lg:px-2 px-5 min-h-screen lg:w-3/5 mx-auto py-10'>

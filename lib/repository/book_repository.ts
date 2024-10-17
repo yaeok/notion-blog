@@ -62,7 +62,7 @@ export const getBooksContents = async (bookType: string) => {
 }
 
 export const getSingleArticle = async (slug: string) => {
-  const databaseId = process.env.NOTION_BLOG_DATABASE_ID
+  const databaseId = process.env.NOTION_BOOK_DATABASE_ID
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
