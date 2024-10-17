@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className='container flex items-center justify-between mx-auto'>
         <Link href='/' className='text-3xl font-medium'>
           <span>Take IT </span>
-          <span className='text-orange-500'>!</span>
+          <span className='text-green-500'>!</span>
         </Link>
         <div className='hidden md:flex'>
           <ul className='flex items-center text-sm py-4 space-x-6 px-4'>

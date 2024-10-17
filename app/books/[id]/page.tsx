@@ -18,7 +18,7 @@ export default async function ContentsPage({
             <div key={book.id} className='mx-4 mb-8'>
               <SingleArticle
                 id={book.group}
-                title={book.title}
+                title={book.article}
                 date={book.date}
                 tags={book.tags}
                 slug={book.slug}

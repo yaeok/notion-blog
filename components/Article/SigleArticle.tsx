@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 
+import Tag from '@/components/Tag/Tag'
+
 type Props = {
   id: string
   title: string
@@ -12,15 +14,15 @@ type Props = {
 
 const SingleArticle = (props: Props) => {
   const { id, title, date, tags, slug, isPaginationPage } = props
-  switch (isPaginationPage) {
-    case true:
-      return (
+  return (
+    <>
+      {isPaginationPage ? (
         <section className='bg-sky-300 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
           <div className='flex flex-col gap-4'>
-            <h2 className='text-gray-100 md:text-lg lg:text-2xl font-medium mb-2'>
+            <h2 className='md:text-lg lg:text-2xl font-medium mb-2'>
               <Link href={`/books/${id}/${slug}`}>{title}</Link>
             </h2>
-            <div className='text-gray-200 mr-2'>{date}</div>
+            <div className='text-gray-800 font-medium mr-2'>{date}</div>
             <div className='flex flex-wrap gap-2'>
               {tags.map((tag: string, index: number) => {
                 return (
@@ -28,25 +30,21 @@ const SingleArticle = (props: Props) => {
                     href={`/books/tag/${tag}/page/1`}
                     key={index.toString()}
                   >
-                    <span className='text-white bg-gray-500 rounded-xl px-2 pb-1 font-medium'>
-                      {tag}
-                    </span>
+                    <Tag tag={tag} />
                   </Link>
                 )
               })}
             </div>
           </div>
         </section>
-      )
-    case false:
-      return (
+      ) : (
         <section className='bg-sky-300 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
           <div className='flex flex-col gap-4'>
-            <h2 className='text-gray-100 text-2xl font-medium mb-2'>
+            <h2 className='text-2xl font-medium mb-2'>
               <Link href={`/books/${id}/${slug}`}>{title}</Link>
             </h2>
             <div className='flex flex-col md:flex-row items-start md:items-center gap-4'>
-              <div className='text-gray-200 mr-2'>{date}</div>
+              <div className='text-gray-800 font-medium mr-2'>{date}</div>
               <div className='flex flex-wrap gap-2'>
                 {tags.map((tag: string, index: number) => {
                   return (
@@ -54,9 +52,7 @@ const SingleArticle = (props: Props) => {
                       href={`/books/tag/${tag}/page/1`}
                       key={index.toString()}
                     >
-                      <span className='text-white bg-gray-500 rounded-xl px-2 pb-1 font-medium mr-2'>
-                        {tag}
-                      </span>
+                      <Tag tag={tag} />
                     </Link>
                   )
                 })}
@@ -64,10 +60,9 @@ const SingleArticle = (props: Props) => {
             </div>
           </div>
         </section>
-      )
-    default:
-      return <></>
-  }
+      )}
+    </>
+  )
 }
 
 export default SingleArticle

@@ -1,6 +1,6 @@
 import Pagination from '@/components/Pagination/Pagination'
 import SinglePost from '@/components/Post/SinglePost'
-import Tag from '@/components/Tag/Tag'
+import TagSection from '@/components/TagSection/TagSection'
 import {
   getAllTags,
   getNumberOfPagesByTag,
@@ -41,7 +41,7 @@ export default async function BlogTagPageList({
           })}
         </section>
         <Pagination numberOfPage={numberOfPagesByTag} tag={currentTag} />
-        <Tag tags={alltags} />
+        <TagSection tags={alltags} />
       </main>
     </div>
   )
