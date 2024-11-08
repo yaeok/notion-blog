@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+import Tag from '@/components/Tag/Tag'
 import { getSingleArticle } from '@/lib/repository/book_repository'
 
 export default async function PostPage({
@@ -16,17 +17,15 @@ export default async function PostPage({
   return (
     <section className='container lg:px-2 px-5 min-h-screen lg:w-3/5 mx-auto py-10'>
       <section className='space-y-12'>
-        <h2 className='text-2xl font-medium'>{post.metadata.title}</h2>
+        <h2 className='text-2xl font-medium'>{post.metadata.article}</h2>
         <div className='flex md:flex-row flex-col justify-between md:items-center items-start'>
           <span className='text-gray-500'>
             Posted date at {post.metadata.date}
           </span>
           <div>
             {post.metadata.tags.map((tag, index) => (
-              <Link href={`/posts/tag/${tag}/page/1`} key={index.toString()}>
-                <span className='text-white bg-sky-900 rounded-xl px-2 pb-1 font-medium mr-2'>
-                  {tag}
-                </span>
+              <Link href={`/books/tag/${tag}/page/1`} key={index.toString()}>
+                <Tag tag={tag} />
               </Link>
             ))}
           </div>

@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import SingleBook from '@/components/Book/SingleBook'
 import SinglePost from '@/components/Post/SinglePost'
-import Tag from '@/components/Tag/Tag'
+import TagSection from '@/components/TagSection/TagSection'
 import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants'
 import { getBooksForTopPage } from '@/lib/repository/book_repository'
 import {
@@ -17,11 +17,11 @@ export default async function HomePage() {
   return (
     <div className='container h-full w-full mx-auto'>
       <main className='w-full mt-16'>
-        <section>
+        <section className='flex flex-col'>
           <h1 className='text-5xl font-medium text-center mb-16'>Blog🚀</h1>
           {fourPosts.map((post) => {
             return (
-              <div key={post.id} className='mx-4 mb-8'>
+              <div key={post.id} className='mx-4'>
                 <SinglePost
                   title={post.title}
                   date={post.date}
@@ -32,10 +32,7 @@ export default async function HomePage() {
               </div>
             )
           })}
-          <Link
-            href='/posts/page/1'
-            className='mb-6 w-fit mx-auto px-5 block text-right'
-          >
+          <Link href='/posts/page/1' className='mb-6 w-fit px-5 block mx-auto'>
             ...もっと見る
           </Link>
         </section>
@@ -63,7 +60,7 @@ export default async function HomePage() {
             ...もっと見る
           </Link>
         </section>
-        <Tag tags={allTags} />
+        <TagSection tags={allTags} />
       </main>
     </div>
   )
