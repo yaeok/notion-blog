@@ -5,7 +5,7 @@ import Tag from '@/components/Tag/Tag'
 
 type Props = {
   title: string
-  date: string
+  date: Date
   tags: string[]
   slug: string
   isPaginationPage: boolean
@@ -21,7 +21,9 @@ const SinglePost = (props: Props) => {
             <h2 className='md:text-lg lg:text-2xl font-medium mb-2'>
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
-            <div className='text-gray-800 font-medium mr-2'>{date}</div>
+            <div className='text-gray-800 font-medium mr-2'>
+              {date.toDateString()}
+            </div>
             <div className='flex flex-wrap gap-2'>
               {tags.map((tag: string, index: number) => {
                 return (
@@ -43,7 +45,9 @@ const SinglePost = (props: Props) => {
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
             <div className='flex flex-col md:flex-row items-start md:items-center gap-4'>
-              <div className='text-gray-800 font-medium mr-2'>{date}</div>
+              <div className='text-gray-800 font-medium mr-2'>
+                {date.toDateString()}
+              </div>
               <div className='flex flex-wrap gap-2'>
                 {tags.map((tag: string, index: number) => {
                   return (

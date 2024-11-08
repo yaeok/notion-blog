@@ -7,14 +7,14 @@ export const getAllPosts = async () => {
     database_id: databaseId,
     page_size: 100,
     filter: {
-      property: 'Published',
+      property: 'published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: 'CreatedAt',
+        property: 'created_at',
         direction: 'descending',
       },
     ],
@@ -37,12 +37,11 @@ const getPageMetadata = (post) => {
 
   return {
     id: post.id,
-    title: post.properties.Name.title[0].plain_text,
-    description: post.properties.Description.rich_text[0].plain_text,
-    date: post.properties.CreatedAt.date.start,
-    slug: post.properties.Slug.rich_text[0].plain_text,
-    tags: getTags(post.properties.Tags.multi_select),
-    type: post.properties.Type.select.name,
+    title: post.properties.title.title[0].plain_text,
+    description: post.properties.description.rich_text[0].plain_text,
+    createdAt: new Date(post.properties.created_at.date.start),
+    slug: post.properties.slug.rich_text[0].plain_text,
+    tags: getTags(post.properties.tags.multi_select),
   } as Post
 }
 
@@ -51,7 +50,7 @@ export const getSinglePost = async (slug: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      property: 'Slug',
+      property: 'slug',
       formula: {
         string: {
           equals: slug,
@@ -112,11 +111,4 @@ export const getAllTags = async (): Promise<string[]> => {
   const allTags: string[] = allPosts.flatMap((post) => post.tags)
   const uniqueTags = Array.from(new Set(allTags))
   return uniqueTags
-}
-
-export const getAllTypes = async () => {
-  const allPosts = await getAllPosts()
-  const allTypes = allPosts.flatMap((post) => post.type)
-  const uniqueTypes = Array.from(new Set(allTypes))
-  return uniqueTypes
 }
