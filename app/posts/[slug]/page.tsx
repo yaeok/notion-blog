@@ -1,9 +1,10 @@
-import { getSinglePost } from '@/lib/repository/post_repository'
 import Link from 'next/link'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+import { getSinglePost } from '@/lib/repository/post_repository'
 
 export default async function PostPage({
   params,
@@ -17,7 +18,7 @@ export default async function PostPage({
         <h2 className='text-2xl font-medium'>{post.metadata.title}</h2>
         <div className='flex md:flex-row flex-col justify-between md:items-center items-start'>
           <span className='text-gray-500'>
-            Posted date at {post.metadata.date}
+            Posted date at {post.metadata.createdAt.toDateString()}
           </span>
           <div>
             {post.metadata.tags.map((tag, index) => (

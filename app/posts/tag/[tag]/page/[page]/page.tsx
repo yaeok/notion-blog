@@ -31,7 +31,7 @@ export default async function BlogTagPageList({
               <div key={post.id}>
                 <SinglePost
                   title={post.title}
-                  date={post.date}
+                  date={post.createdAt}
                   tags={post.tags}
                   slug={post.slug}
                   isPaginationPage={true}

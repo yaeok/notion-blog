@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {
   title: string
-  date: string
+  date: Date
   tags: string[]
   slug: string
   isPaginationPage: boolean
@@ -14,12 +14,22 @@ const SinglePost = (props: Props) => {
   return (
     <>
       {isPaginationPage ? (
+<<<<<<< Updated upstream
         <section className='lg:w-2/3 bg-sky-900 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+=======
+        <section className='bg-green-200 mb-8 rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+>>>>>>> Stashed changes
           <div className='flex flex-col gap-4'>
             <h2 className='text-gray-100 md:text-lg lg:text-2xl font-medium mb-2'>
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
+<<<<<<< Updated upstream
             <div className='text-gray-200 mr-2'>{date}</div>
+=======
+            <div className='text-gray-800 font-medium mr-2'>
+              {date.toDateString()}
+            </div>
+>>>>>>> Stashed changes
             <div className='flex flex-wrap gap-2'>
               {tags.map((tag: string, index: number) => {
                 return (
@@ -37,13 +47,23 @@ const SinglePost = (props: Props) => {
           </div>
         </section>
       ) : (
+<<<<<<< Updated upstream
         <section className='lg:w-2/3 bg-sky-900 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+=======
+        <section className='w-full mx-auto bg-green-200 mb-8 rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+>>>>>>> Stashed changes
           <div className='flex flex-col gap-4'>
             <h2 className='text-gray-100 text-2xl font-medium mb-2'>
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
             <div className='flex flex-col md:flex-row items-start md:items-center gap-4'>
+<<<<<<< Updated upstream
               <div className='text-gray-200 mr-2'>{date}</div>
+=======
+              <div className='text-gray-800 font-medium mr-2'>
+                {date.toDateString()}
+              </div>
+>>>>>>> Stashed changes
               <div className='flex flex-wrap gap-2'>
                 {tags.map((tag: string, index: number) => {
                   return (
