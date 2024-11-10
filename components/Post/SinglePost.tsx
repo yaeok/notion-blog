@@ -39,13 +39,13 @@ const SinglePost = (props: Props) => {
           </div>
         </section>
       ) : (
-        <section className='lg:w-2/3 bg-green-200 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
-          <div className='flex flex-col gap-4'>
-            <h2 className='text-2xl font-medium mb-2'>
+        <section className='w-full bg-gray-200 mb-8 mx-auto rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300'>
+          <div className='flex flex-col gap-2'>
+            <h2 className='text-xl font-medium mb-2'>
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
             <div className='flex flex-col md:flex-row items-start md:items-center gap-4'>
-              <div className='text-gray-800 font-medium mr-2'>
+              <div className='text-gray-600 font-medium mr-2'>
                 {date.toDateString()}
               </div>
               <div className='flex flex-wrap gap-2'>
