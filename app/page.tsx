@@ -12,10 +12,10 @@ export default async function HomePage() {
   const fourPosts = await getPostsForTopPage(NUMBER_OF_POSTS_PER_PAGE)
   const allTags = await getAllTags()
   return (
-    <main className='container h-full w-full'>
+    <main className='h-full w-full'>
       <div className='w-full lg:w-3/4 mx-auto flex flex-row'>
-        <div className='w-1/4 mx-4 my-8 p-4 rounded-md shadow-lg bg-indigo-200 top-0 left-0 z-40'>
-          <section className=''>
+        <div className='w-1/4 h-screen sticky top-0 left-0 z-40'>
+          <section className='bg-indigo-200 mx-4 my-8 p-4 rounded-md shadow-lg'>
             <h1>サイドメニュー</h1>
           </section>
         </div>
@@ -35,12 +35,11 @@ export default async function HomePage() {
                 </div>
               )
             })}
-            <Link
-              href='/posts/page/1'
-              className='mb-6 w-fit px-5 block mx-auto'
-            >
-              ...もっと見る
-            </Link>
+            <div className='w-full flex justify-end'>
+              <Link href='/posts/page/1' className='mb-6 w-fit px-5 block'>
+                ...もっと見る
+              </Link>
+            </div>
           </section>
           <TagSection tags={allTags} />
         </div>
