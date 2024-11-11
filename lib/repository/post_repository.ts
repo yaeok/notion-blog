@@ -35,8 +35,11 @@ const getPageMetadata = (post) => {
     return allTags
   }
 
+  // console.log(post)
+
   return {
     id: post.id,
+    icon: post.cover != null ? post.cover.external.url : '',
     title: post.properties.title.title[0].plain_text,
     description: post.properties.description.rich_text[0].plain_text,
     createdAt: new Date(post.properties.created_at.date.start),

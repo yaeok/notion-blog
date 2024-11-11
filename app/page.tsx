@@ -13,19 +13,19 @@ export default async function HomePage() {
   const allTags = await getAllTags()
   return (
     <main className='h-full w-full'>
-      <div className='w-full lg:w-3/4 mx-auto flex flex-row'>
+      <div className='container mx-auto flex flex-row'>
         <div className='w-1/4 h-screen sticky top-0 left-0 z-40'>
-          <section className='bg-indigo-200 mx-4 my-8 p-4 rounded-md shadow-lg'>
+          <section className='bg-indigo-200 mx-4 mt-10 p-4 rounded-md shadow-lg'>
             <h1>サイドメニュー</h1>
           </section>
         </div>
-        <div className='w-3/4'>
-          <section className='flex flex-col'>
-            <h1 className='text-5xl font-medium text-center mb-16'>Blog🚀</h1>
+        <div className='w-3/4 mt-8'>
+          <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {fourPosts.map((post) => {
               return (
-                <div key={post.id} className='mx-4'>
+                <div key={post.id}>
                   <SinglePost
+                    icon={post.icon}
                     title={post.title}
                     date={post.createdAt}
                     tags={post.tags}
@@ -35,12 +35,12 @@ export default async function HomePage() {
                 </div>
               )
             })}
-            <div className='w-full flex justify-end'>
-              <Link href='/posts/page/1' className='mb-6 w-fit px-5 block'>
-                ...もっと見る
-              </Link>
-            </div>
           </section>
+          <div className='w-full flex justify-end'>
+            <Link href='/posts/page/1' className='mb-6 w-fit px-5 block'>
+              ...もっと見る
+            </Link>
+          </div>
           <TagSection tags={allTags} />
         </div>
       </div>

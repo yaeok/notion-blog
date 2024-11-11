@@ -11,7 +11,7 @@ const TagSection = (props: Props) => {
   const { tags } = props
   return (
     <div className='mx-4'>
-      <section className='w-full mb-8 mx-auto bg-indigo-200 rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 duration-300 transition-all'>
+      <section className='w-1/2 mb-8 mx-auto bg-white rounded-md p-4 shadow-2xl hover:shadow-none hover:translate-y-1 duration-300 transition-all'>
         <div className='font-medium mb-4'>タグ検索</div>
         <div className='flex flex-wrap gap-2 justify-center items-center'>
           {tags.map((tag: string, index: number) => (
