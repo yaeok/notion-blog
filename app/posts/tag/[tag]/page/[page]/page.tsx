@@ -25,11 +25,12 @@ export default async function BlogTagPageList({
     <div className='container h-full w-full mx-auto'>
       <main className='container w-full mt-16'>
         <h1 className='text-5xl font-medium text-center mb-16'>Blog🚀</h1>
-        <section className='sm:grid grid-cols-2 w-5/6 gap-3 mx-auto'>
+        <section className='sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mx-auto'>
           {postsByPage.map((post) => {
             return (
               <div key={post.id}>
                 <SinglePost
+                  icon=''
                   title={post.title}
                   date={post.createdAt}
                   tags={post.tags}

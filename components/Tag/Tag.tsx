@@ -4,7 +4,7 @@ type TagProps = {
 
 const Tag = ({ tag }: TagProps) => {
   return (
-    <span className='text-white bg-sky-900 rounded-xl px-2 pb-1 font-medium'>
+    <span className='text-sm font-medium text-white bg-orange-500 rounded-xl px-2 pb-1'>
       {tag}
     </span>
   )

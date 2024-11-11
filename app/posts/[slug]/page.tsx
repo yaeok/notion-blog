@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+import Tag from '@/components/Tag/Tag'
 import { getSinglePost } from '@/lib/repository/post_repository'
 
 export default async function PostPage({
@@ -13,26 +14,24 @@ export default async function PostPage({
 }) {
   const post = await getSinglePost(params.slug)
   return (
-    <section className='container lg:px-2 px-5 min-h-screen lg:w-3/5 mx-auto py-10'>
+    <section className='my-4 px-4 min-h-screen lg:w-3/5 mx-auto py-10 bg-white'>
       <section className='space-y-12'>
-        <h2 className='text-2xl font-medium'>{post.metadata.title}</h2>
+        <h2 className='text-3xl font-medium'>{post.metadata.title}</h2>
         <div className='flex md:flex-row flex-col justify-between md:items-center items-start'>
           <span className='text-gray-500'>
             Posted date at {post.metadata.createdAt.toDateString()}
           </span>
-          <div>
+          <div className='flex flex-wrap gap-2'>
             {post.metadata.tags.map((tag, index) => (
               <Link href={`/posts/tag/${tag}/page/1`} key={index.toString()}>
-                <span className='text-white bg-sky-900 rounded-xl px-2 pb-1 font-medium mr-2'>
-                  {tag}
-                </span>
+                <Tag tag={tag} />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <div className='my-14 border-b border-sky-900' />
+      <div className='my-14 border-2 border-sky-900' />
 
       <section>
         <div className='markdown'>
@@ -63,7 +62,7 @@ export default async function PostPage({
         </div>
       </section>
 
-      <div className='my-14 border-b border-sky-900' />
+      <div className='my-14 border-2 border-sky-900' />
 
       <section>
         <div className='group relative inline-flex h-10 w-12 items-center justify-center overflow-hidden rounded-full bg-indigo-200 font-medium text-black transition-all duration-300 hover:w-36'>

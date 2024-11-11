@@ -1,1 +1,1 @@
-export const NUMBER_OF_POSTS_PER_PAGE = 20
+export const NUMBER_OF_POSTS_PER_PAGE = 12

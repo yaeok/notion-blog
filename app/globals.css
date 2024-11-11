@@ -7,7 +7,7 @@ body {
 }
 
 .markdown {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .markdown img {
@@ -21,6 +21,7 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin: 20px 0px;
+  padding: 0px 10px;
   border-bottom: lightgray 1px solid;
 }
 
@@ -28,12 +29,14 @@ body {
   font-size: 1.75rem;
   font-weight: 600;
   margin: 15px 0px;
+  padding: 0px 10px;
   border-bottom: lightgray 1px solid;
 }
 
 .markdown h3 {
   font-size: 1.5rem;
   font-weight: 600;
+  padding: 0px 10px;
   margin: 10px 0;
 }
 
@@ -48,7 +51,6 @@ body {
   color: blue;
   text-decoration: none;
   font-weight: 500;
-  border-bottom: blue 2px solid;
 }
 
 .markdown a:hover {
@@ -58,19 +60,13 @@ body {
 }
 
 .markdown ul {
-  list-style-type: none;
+  list-style-type: disc;
   padding: 0 0 0 40px;
-}
-
-.markdown ul ::before {
-  content: '-';
-  margin-right: 8px;
 }
 
 .markdown li {
   font-size: 1rem;
   font-weight: 300;
-  margin: 4px 0;
 }
 
 .markdown pre {
