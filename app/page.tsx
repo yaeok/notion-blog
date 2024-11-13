@@ -30,7 +30,6 @@ export default async function HomePage() {
                     date={post.createdAt}
                     tags={post.tags}
                     slug={post.slug}
-                    isPaginationPage={false}
                   />
                 </div>
               )
