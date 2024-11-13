@@ -29,7 +29,6 @@ export default async function BlogPageList({
                   date={post.createdAt}
                   tags={post.tags}
                   slug={post.slug}
-                  isPaginationPage={true}
                 />
               </div>
             )
