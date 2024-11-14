@@ -17,7 +17,7 @@ export default async function HomePage() {
     <main className='h-full w-full'>
       <div className='container mx-auto flex flex-row'>
         <div className='w-1/4 h-screen sticky top-0 left-0 z-40'>
-          <section className='bg-indigo-200 mx-4 mt-10 p-4 rounded-md shadow-lg'>
+          <section className='bg-secondary-300 mx-4 mt-10 p-4 rounded-md shadow-lg'>
             <h1>サイドメニュー</h1>
           </section>
         </div>
@@ -29,6 +29,7 @@ export default async function HomePage() {
                   <SinglePost
                     icon={post.icon}
                     title={post.title}
+                    description={post.description}
                     date={post.createdAt}
                     tags={post.tags}
                     slug={post.slug}

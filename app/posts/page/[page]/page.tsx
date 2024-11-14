@@ -28,6 +28,7 @@ export default async function BlogPageList({
                 <SinglePost
                   icon={post.icon}
                   title={post.title}
+                  description={post.description}
                   date={post.createdAt}
                   tags={post.tags}
                   slug={post.slug}

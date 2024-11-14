@@ -7,6 +7,7 @@ import Tag from '@/components/Tag/Tag'
 type Props = {
   icon: string
   title: string
+  description: string
   date: Date
   tags: string[]
   slug: string
@@ -26,25 +27,27 @@ const SinglePost = (props: Props) => {
             style={{ width: '100%', height: '100%', objectFit: 'contain' }}
           />
         </section>
-        <section className='h-1/2 flex flex-col gap-2'>
-          <h2 className='text-xl font-medium mb-2 hover:border-b hover:border-black'>
-            <Link href={`/posts/${slug}`}>{title}</Link>
-          </h2>
-          <div className='flex flex-col items-start gap-4'>
-            <div className='flex flex-wrap gap-2'>
-              {tags.map((tag: string, index: number) => {
-                return (
-                  <Link
-                    href={`/posts/tag/${tag}/page/1`}
-                    key={index.toString()}
-                  >
-                    <Tag tag={tag} />
-                  </Link>
-                )
-              })}
+        <section className='h-1/2 flex flex-col justify-between'>
+          <div>
+            <h2 className='text-xl font-medium mb-2 hover:border-b hover:border-black'>
+              <Link href={`/posts/${slug}`}>{title}</Link>
+            </h2>
+            <div className='flex flex-col items-start gap-4'>
+              <div className='flex flex-wrap gap-2'>
+                {tags.map((tag: string, index: number) => {
+                  return (
+                    <Link
+                      href={`/posts/tag/${tag}/page/1`}
+                      key={index.toString()}
+                    >
+                      <Tag tag={tag} />
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           </div>
-          <div className='text-gray-300 font-medium mr-2'>
+          <div className='text-gray-500 font-medium mr-2 text-end'>
             {date.toDateString()}
           </div>
         </section>
