@@ -7,6 +7,8 @@ import {
   getPostsByTagAndPage,
 } from '@/lib/repository/post_repository'
 
+export const revalidate = 60
+
 export default async function BlogTagPageList({
   params,
 }: {
@@ -30,12 +32,11 @@ export default async function BlogTagPageList({
             return (
               <div key={post.id}>
                 <SinglePost
-                  icon=''
+                  icon={post.icon}
                   title={post.title}
                   date={post.createdAt}
                   tags={post.tags}
                   slug={post.slug}
-                  isPaginationPage={true}
                 />
               </div>
             )
