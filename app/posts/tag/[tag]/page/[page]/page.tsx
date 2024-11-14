@@ -7,6 +7,8 @@ import {
   getPostsByTagAndPage,
 } from '@/lib/repository/post_repository'
 
+export const revalidate = 60
+
 export default async function BlogTagPageList({
   params,
 }: {

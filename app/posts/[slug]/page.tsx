@@ -7,6 +7,8 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import Tag from '@/components/Tag/Tag'
 import { getSinglePost } from '@/lib/repository/post_repository'
 
+export const revalidate = 60
+
 export default async function PostPage({
   params,
 }: {
