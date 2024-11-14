@@ -8,6 +8,8 @@ import {
   getPostsForTopPage,
 } from '@/lib/repository/post_repository'
 
+export const revalidate = 60
+
 export default async function HomePage() {
   const fourPosts = await getPostsForTopPage(NUMBER_OF_POSTS_PER_PAGE)
   const allTags = await getAllTags()
