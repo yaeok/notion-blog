@@ -37,7 +37,11 @@ export default async function BlogPageList({
             )
           })}
         </section>
-        <Pagination numberOfPage={numberOfPage} tag='' />
+        <Pagination
+          numberOfPage={numberOfPage}
+          tag=''
+          selectNumberOfPage={parseInt(params.page.toString(), 10)}
+        />
         <TagSection tags={alltags} />
       </main>
     </div>
