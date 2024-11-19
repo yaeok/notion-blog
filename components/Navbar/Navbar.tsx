@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className='container flex items-center justify-between mx-auto'>
           <Link href='/' className='text-3xl font-medium'>
             <span>Take IT </span>
-            <span className='text-green-500'>!</span>
+            <span className='text-primary-500'>!</span>
           </Link>
           <div className='hidden md:flex'>
             <ul className='flex items-center text-sm py-4 space-x-6 px-4'>
@@ -17,7 +17,7 @@ const Navbar = () => {
                   href='https://github.com/yaeok'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='block my-2 font-medium hover:text-green-800 transition-all duration-300 hover:underline'
+                  className='block my-2 font-medium hover:text-secondary-400 transition-all duration-300 hover:underline'
                 >
                   Github
                 </Link>
@@ -27,7 +27,7 @@ const Navbar = () => {
                   href='https://qiita.com/yappi-dev'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='block my-2 font-medium hover:text-green-800 transition-all duration-300 hover:underline'
+                  className='block my-2 font-medium hover:text-secondary-400 transition-all duration-300 hover:underline'
                 >
                   Qiita
                 </Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
                   href='https://zenn.dev/ko_hei'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='block my-2 font-medium hover:text-green-800 transition-all duration-300 hover:underline'
+                  className='block my-2 font-medium hover:text-secondary-400 transition-all duration-300 hover:underline'
                 >
                   Zenn
                 </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
                   href=''
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='block my-2 font-medium hover:text-green-800 transition-all duration-300 hover:underline'
+                  className='block my-2 font-medium hover:text-secondary-400 transition-all duration-300 hover:underline'
                 >
                   X(旧:Twitter)
                 </Link>
