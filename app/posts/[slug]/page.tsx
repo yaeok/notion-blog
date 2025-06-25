@@ -1,13 +1,13 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Metadata } from 'next'
+import Link from 'next/link'
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
-import Tag from '@/components/Tag/Tag';
-import { getSinglePost } from '@/lib/repository/post_repository';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
+import Tag from '@/components/Tag/Tag'
+import { getSinglePost } from '@/lib/repository/post_repository'
 
 export const revalidate = 60
 
@@ -121,15 +121,6 @@ export default async function PostPage({
         </section>
 
         <div className='my-14 border-2 border-secondary-900' />
-
-        <section>
-          <Link
-            href='/'
-            className='px-4 py-2 rounded-lg shadow-xl bg-secondary-500 hover:shadow-none hover:translate-y-1 transition-all duration-300'
-          >
-            <span className='text-white font-semibold'>ホームへ戻る</span>
-          </Link>
-        </section>
       </section>
     </>
   )

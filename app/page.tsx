@@ -1,9 +1,12 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import SinglePost from '@/components/Post/SinglePost';
-import TagSection from '@/components/TagSection/TagSection';
-import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants';
-import { getAllTags, getPostsForTopPage } from '@/lib/repository/post_repository';
+import SinglePost from '@/components/Post/SinglePost'
+import TagSection from '@/components/TagSection/TagSection'
+import { NUMBER_OF_POSTS_PER_PAGE } from '@/constants/constants'
+import {
+  getAllTags,
+  getPostsForTopPage,
+} from '@/lib/repository/post_repository'
 
 export const revalidate = 60
 

@@ -1,10 +1,12 @@
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
-import Pagination from '@/components/Pagination/Pagination';
-import SinglePost from '@/components/Post/SinglePost';
-import TagSection from '@/components/TagSection/TagSection';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
+import Pagination from '@/components/Pagination/Pagination'
+import SinglePost from '@/components/Post/SinglePost'
+import TagSection from '@/components/TagSection/TagSection'
 import {
-  getAllTags, getNumberOfPagesByTag, getPostsByTagAndPage
-} from '@/lib/repository/post_repository';
+  getAllTags,
+  getNumberOfPagesByTag,
+  getPostsByTagAndPage,
+} from '@/lib/repository/post_repository'
 
 export const revalidate = 60
 

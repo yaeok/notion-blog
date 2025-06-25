@@ -1,6 +1,6 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
 
-import { getAllPosts } from '@/lib/repository/post_repository';
+import { getAllPosts } from '@/lib/repository/post_repository'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
