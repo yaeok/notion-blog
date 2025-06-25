@@ -121,6 +121,8 @@ export default async function PostPage({
         </section>
 
         <div className='my-14 border-2 border-secondary-900' />
+
+        <Breadcrumbs items={breadcrumbItems} />
       </section>
     </>
   )
